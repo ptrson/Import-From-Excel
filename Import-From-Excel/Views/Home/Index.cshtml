@@ -1,31 +1,99 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<Import_From_Excel.Models.Address>
+@{
+    ViewBag.Title = "Strona główna";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<body>
+    <div class="jumbotron">
+        <h3>Importowanie danych z pliku Excel do bazy danych</h3>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <div>
+                @Html.Raw(ViewBag.Error)
+                <input type="file" name="excelfile" required />
+                <br />
+                <button type="submit">Importuj</button>
+            </div>
+        </form>
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.AddressId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StreetName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StreetNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FlatNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostOfficeCity)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CorrespondenceStreetName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CorrespondenceStreetnumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CorrespondenceFlatNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CorrespondencePostCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CorrespondencePostOfficeCity)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AddressId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StreetName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StreetNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FlatNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostOfficeCity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorrespondenceStreetName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorrespondenceStreetnumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorrespondenceFlatNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorrespondencePostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CorrespondencePostOfficeCity)
+                    </td>
+                </tr>
+            }
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+
+</body>
